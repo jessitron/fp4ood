@@ -1,14 +1,15 @@
 package com.jessitron.functionalprinciples.lazy;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
-import org.junit.Test;
+import static com.jessitron.functionalprinciples.fluent.FluentIterable.take;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Iterator;
 
-import static com.jessitron.functionalprinciples.fluent.FluentIterable.take;
+import org.junit.Test;
+
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
 
 public class PrettierLazyIteration {
   private static final Predicate<String> STARTS_WITH_BUG_PREDICATE = new Predicate<String>() {
@@ -31,13 +32,13 @@ public class PrettierLazyIteration {
 
   @Test
   public void functionalStyleWithFluentInterface() throws IOException {
-    final RandomAccessFile br = new RandomAccessFile("temp.thingie", "r");
+    final RandomAccessFile br = new RandomAccessFile("pretendLogFile.txt", "r");
 
     for (String s : take(new RandomFileIterable(br))    // how to get the lines
         .filterBy(STARTS_WITH_BUG_PREDICATE)            // which lines to choose
         .transformWith(TRANSFORM_BUG_LINE_FUNCTION)     // how to transform the lines
         .limit(40)                                      // how many to use
-        .asImmutableList()) {
+        ) {
       report(s);                                        // do this for each one.
     }
 
