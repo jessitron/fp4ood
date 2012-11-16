@@ -68,8 +68,11 @@ public class FunctionalLazyIteration {
       try {
         waitUntilFileHasMoreData(file);
         return file.readLine();
-      } catch (IOException | InterruptedException e) {
+      } catch ( InterruptedException e) {
         throw new RuntimeException(e);
+      }
+      catch ( IOException e) {
+          throw new RuntimeException(e);
       }
     }
 

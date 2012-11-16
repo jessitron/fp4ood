@@ -26,6 +26,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="biojava3-core-3.0.4" level="project" />
   </component>
 </module>
 

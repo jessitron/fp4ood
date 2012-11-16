@@ -58,8 +58,11 @@ public class PrettyLazyIteration {
       try {
         waitUntilFileHasMoreData(file);
         return file.readLine();
-      } catch (IOException | InterruptedException e) {
-        throw new RuntimeException(e);
+      }catch ( InterruptedException e) {
+          throw new RuntimeException(e);
+      }
+      catch ( IOException e) {
+          throw new RuntimeException(e);
       }
     }
 
